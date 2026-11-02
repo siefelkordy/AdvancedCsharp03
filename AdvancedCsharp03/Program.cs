@@ -85,30 +85,95 @@
             #endregion
 
             #region Exercise3
-            Dictionary<string, int> Contact = new Dictionary<string, int>();
-            Contact["Ahmed"] = 123456789;
-            Contact["Sara"] = 987654321;
-            Contact["Mohamed"] = 456789123;
-           // Contact.Add("Ahmed", 987654321);//This will throw an exception as the key already exists
-            Contact.TryAdd("Ahmed", 987654321);//This will not throw an exception and will return false as the key already exists
-            Console.WriteLine(Contact.TryGetValue("sara", out int phoneNumber));
-            if(phoneNumber != 0)
-            {
-                Console.WriteLine($"Phone number of sara: {phoneNumber}");
-            }
-            else
-            {
-                Console.WriteLine($"Not Found");
-            }
-            foreach(var contact in Contact)
-            {
-                Console.Write($"Name: {contact.Key},");
+            // Dictionary<string, int> Contact = new Dictionary<string, int>();
+            // Contact["Ahmed"] = 123456789;
+            // Contact["Sara"] = 987654321;
+            // Contact["Mohamed"] = 456789123;
+            //// Contact.Add("Ahmed", 987654321);//This will throw an exception as the key already exists
+            // Contact.TryAdd("Ahmed", 987654321);//This will not throw an exception and will return false as the key already exists
+            // Console.WriteLine(Contact.TryGetValue("sara", out int phoneNumber));
+            // if(phoneNumber != 0)
+            // {
+            //     Console.WriteLine($"Phone number of sara: {phoneNumber}");
+            // }
+            // else
+            // {
+            //     Console.WriteLine($"Not Found");
+            // }
+            // foreach(var contact in Contact)
+            // {
+            //     Console.Write($"Name: {contact.Key},");
 
-            }
-            foreach (var contact in Contact)
+            // }
+            // foreach (var contact in Contact)
+            // {
+            //     Console.WriteLine($"Phone Number: {contact.Value}");
+            // }
+
+            #endregion
+
+            #region Exercise 4
+
+            // 1. Unique Email Validator
+            HashSet<string> emails = new HashSet<string>(
+                StringComparer.OrdinalIgnoreCase
+            );
+
+            emails.Add("ahmed@test.com");
+            emails.Add("AHMED@test.com");
+            emails.Add("sara@test.com");
+            emails.Add("Sara@Test.Com");
+
+            // 2. Print email count
+            Console.WriteLine("Email Count: " + emails.Count);
+
+            foreach (var email in emails)
             {
-                Console.WriteLine($"Phone Number: {contact.Value}");
+                Console.WriteLine(email);
             }
+
+            // 3. Create Set A and Set B
+            HashSet<int> SetA = new HashSet<int> { 1, 2, 3, 4, 5 };
+            HashSet<int> SetB = new HashSet<int> { 4, 5, 6, 7, 8 };
+
+            // 4. UnionWith
+            HashSet<int> UnionSet = new HashSet<int>(SetA);
+            UnionSet.UnionWith(SetB);
+
+            Console.WriteLine("\nUnion:");
+            foreach (var item in UnionSet)
+            {
+                Console.Write(item + " ");
+            }
+
+            // 5. IntersectWith
+            HashSet<int> IntersectSet = new HashSet<int>(SetA);
+            IntersectSet.IntersectWith(SetB);
+
+            Console.WriteLine("\n\nIntersection:");
+            foreach (var item in IntersectSet)
+            {
+                Console.Write(item + " ");
+            }
+
+            // 6. ExceptWith
+            HashSet<int> ExceptSet = new HashSet<int>(SetA);
+            ExceptSet.ExceptWith(SetB);
+
+            Console.WriteLine("\n\nExcept:");
+            foreach (var item in ExceptSet)
+            {
+                Console.Write(item + " ");
+            }
+
+            // 7. IsSubsetOf
+            HashSet<int> SetC = new HashSet<int> { 1, 2 };
+
+            Console.WriteLine("\n\nIs {1, 2} a subset of SetA?");
+            Console.WriteLine(SetC.IsSubsetOf(SetA));
+
+
+
 
             #endregion
             #region Exercise6
@@ -137,3 +202,4 @@
         }
     }
 }
+
