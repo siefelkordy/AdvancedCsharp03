@@ -51,35 +51,63 @@
 
             #region Exercise2
 
-            Dictionary<int,string> leaderboard = new Dictionary<int,string>();
-            leaderboard.Add(500, "Ahmed");
-            leaderboard.Add(200, "Sara");
-            leaderboard.Add(800, "Ali");
-            leaderboard.Add(350, "Mona");
-            // Sort by score (Key) and print
-            foreach (var player in leaderboard.OrderBy(p => p.Key))
+            //Dictionary<int,string> leaderboard = new Dictionary<int,string>();
+            //leaderboard.Add(500, "Ahmed");
+            //leaderboard.Add(200, "Sara");
+            //leaderboard.Add(800, "Ali");
+            //leaderboard.Add(350, "Mona");
+            //// Sort by score (Key) and print
+            //foreach (var player in leaderboard.OrderBy(p => p.Key))
+            //{
+            //    Console.WriteLine($"Score: {player.Key}, Player: {player.Value}");
+            //}
+            //Console.WriteLine($"First player: {leaderboard.First().Value} , Score: {leaderboard.First().Key}");//Accessing the first player and score
+            //foreach (var player in leaderboard)
+            //{
+            //    if(player.Key==500)
+            //        Console.WriteLine($"Player with score 500: {player.Value} Exists");//Accessing the player with score 500
+            //}
+            //leaderboard.TryGetValue(900, out string playerWithScore900);
+            //if (playerWithScore900 != null)
+            //{
+            //    Console.WriteLine($"Player with score 900: {playerWithScore900} Exists");
+            //}
+            //else
+            //{
+            //    Console.WriteLine($"Player with score 900 Does not Exist");
+            //}
+            //leaderboard.Remove(200);//Removing the player with score 200
+            //foreach (var player in leaderboard.OrderBy(p => p.Key))
+            //{
+            //    Console.WriteLine($"Score: {player.Key}, Player: {player.Value}");
+            //}
+
+            #endregion
+
+            #region Exercise3
+            Dictionary<string, int> Contact = new Dictionary<string, int>();
+            Contact["Ahmed"] = 123456789;
+            Contact["Sara"] = 987654321;
+            Contact["Mohamed"] = 456789123;
+           // Contact.Add("Ahmed", 987654321);//This will throw an exception as the key already exists
+            Contact.TryAdd("Ahmed", 987654321);//This will not throw an exception and will return false as the key already exists
+            Console.WriteLine(Contact.TryGetValue("sara", out int phoneNumber));
+            if(phoneNumber != 0)
             {
-                Console.WriteLine($"Score: {player.Key}, Player: {player.Value}");
-            }
-            Console.WriteLine($"First player: {leaderboard.First().Value} , Score: {leaderboard.First().Key}");//Accessing the first player and score
-            foreach (var player in leaderboard)
-            {
-                if(player.Key==500)
-                    Console.WriteLine($"Player with score 500: {player.Value} Exists");//Accessing the player with score 500
-            }
-            leaderboard.TryGetValue(900, out string playerWithScore900);
-            if (playerWithScore900 != null)
-            {
-                Console.WriteLine($"Player with score 900: {playerWithScore900} Exists");
+                Console.WriteLine($"Phone number of sara: {phoneNumber}");
             }
             else
             {
-                Console.WriteLine($"Player with score 900 Does not Exist");
+                Console.WriteLine($"Not Found");
             }
-            leaderboard.Remove(200);//Removing the player with score 200
-            foreach (var player in leaderboard.OrderBy(p => p.Key))
+            foreach(var contact in Contact)
             {
-                Console.WriteLine($"Score: {player.Key}, Player: {player.Value}");
+                Console.Write($"Name: {contact.Key},");
+
+            }
+            foreach (var contact in Contact)
+            {
+                Console.WriteLine($"Phone Number: {contact.Value}");
             }
 
             #endregion
